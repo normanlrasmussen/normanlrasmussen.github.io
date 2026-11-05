@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Norman Rasmussen | Applied Mathematics & Software Engineering',
+  description = 'Portfolio of Norman Rasmussen: software engineering, optimization, mathematical modeling, machine learning, and research.'
+} = Astro.props;
+const route = Astro.url.pathname;
+const links = [
+  { href: '/projects/', label: 'Projects' },
+  { href: '/research/', label: 'Research' },
+  { href: '/experience/', label: 'Experience' },
+  { href: '/resume/', label: 'Résumé & Contact' }
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f8f6" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={Astro.url.href} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/" aria-label="Norman Rasmussen, homepage"><span class="wordmark-monogram">NR</span><span>Norman Rasmussen<span class="wordmark-period">.</span></span></a>
+        <nav class="nav" aria-label="Primary navigation">
+          {links.map((link) => (
+            <a class={route === link.href || route.startsWith(link.href) && link.href !== '/resume/' ? 'nav-link active' : 'nav-link'} href={link.href}>{link.label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div>
+          <a href="/" class="footer-name">Norman Rasmussen</a>
+          <p>Applied mathematics, thoughtful engineering, practical systems.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/projects/">Projects</a>
+          <a href="/research/">Research</a>
+          <a href="https://github.com/normanlrasmussen" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="wrap footer-bottom"><span>Built with Astro. Hosted on GitHub Pages.</span><span>© {new Date().getFullYear()} Norman Rasmussen</span></div>
+    </footer>
+  </body>
+</html>
