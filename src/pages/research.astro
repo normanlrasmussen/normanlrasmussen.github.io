@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { research } from '../data/research';
+---
+<BaseLayout title="Research | Norman Rasmussen" description="Research interests and ongoing projects in optimization, stochastic systems, dynamical systems, and computational game theory.">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio / Research</p>
+      <h1>Mathematical ideas, tested computationally.</h1>
+      <p class="page-intro">My interests span probability, optimization, dynamical systems, networks, and game theory. I enjoy developing mathematical models and studying how their predictions compare with computational experiments.</p>
+    </div>
+  </section>
+  <section class="page-content">
+    <div class="wrap">
+      <p class="section-label" style="margin-bottom: 18px;">Research topics and work in progress</p>
+      <div class="research-list">
+        {research.map((item) => (
+          <article class="research-item">
+            <div class="project-meta" style="margin-top: 0"><span>{item.field}</span><span class="meta-dot" aria-hidden="true"></span><span>{item.status}</span></div>
+            <h2>{item.title}</h2>
+            <p>{item.summary}</p>
+            <div class="tag-row">{item.methods.map((method) => <span class="tag">{method}</span>)}</div>
+            {item.link && <p style="margin-top: 18px"><a class="text-link" href={item.link} target="_blank" rel="noopener noreferrer">Related public repository ↗</a></p>}
+            {item.note && <p class="research-note">{item.note}</p>}
+          </article>
+        ))}
+      </div>
+      <div class="cta-panel" style="margin-top: 34px;">
+        <h2>Publications & technical writing</h2>
+        <p>Manuscripts and publications will be listed here with accurate publication status and links when they are publicly available. In the meantime, explore my public technical projects.</p>
+        <a class="button ghost" href="/projects/">Browse technical projects →</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

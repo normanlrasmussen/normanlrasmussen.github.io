@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { categories, projects } from '../../data/projects';
+---
+<BaseLayout title="Projects | Norman Rasmussen" description="Explore software engineering, optimization, machine learning, algorithms, and mathematical computing projects by Norman Rasmussen.">
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Portfolio / Projects</p>
+      <h1>Selected projects and experiments.</h1>
+      <p class="page-intro">A complete index of my public GitHub projects, from substantial applications to exploratory exercises. Each entry explains the problem and approach, and links to its source.</p>
+    </div>
+  </section>
+  <section class="page-content">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filter projects by category">
+        {categories.map((category) => <button class="filter" data-filter={category} aria-pressed={category === 'All' ? 'true' : 'false'} type="button">{category}</button>)}
+      </div>
+      <label class="section-label" for="project-search">Search projects</label>
+      <input class="search-field" id="project-search" type="search" placeholder="Search by project, technology, or topic…" autocomplete="off" />
+      <p class="results-count" id="results-count" aria-live="polite">{projects.length} projects</p>
+      <div class="projects-grid" id="project-grid">
+        {projects.map((project) => (
+          <div data-project-card data-category={project.category} data-search={[project.name, project.summary, project.category, ...project.stack].join(' ').toLowerCase()}>
+            <ProjectCard project={project} />
+          </div>
+        ))}
+      </div>
+      <div id="empty-results" class="empty-state" hidden>No projects match those filters. Try a different category or search term.</div>
+    </div>
+  </section>
+  <script>
+    const filters = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const cards = [...document.querySelectorAll<HTMLElement>('[data-project-card]')];
+    const search = document.querySelector<HTMLInputElement>('#project-search');
+    const count = document.querySelector<HTMLElement>('#results-count');
+    const empty = document.querySelector<HTMLElement>('#empty-results');
+    let activeCategory = 'All';
+
+    function updateProjects() {
+      const term = (search?.value || '').trim().toLowerCase();
+      let visible = 0;
+      for (const card of cards) {
+        const categoryMatch = activeCategory === 'All' || card.dataset.category === activeCategory;
+        const textMatch = (card.dataset.search || '').includes(term);
+        card.hidden = !(categoryMatch && textMatch);
+        if (!card.hidden) visible++;
+      }
+      if (count) count.textContent = visible + ' ' + (visible === 1 ? 'project' : 'projects');
+      if (empty) empty.hidden = visible > 0;
+    }
+    filters.forEach((filter) => filter.addEventListener('click', () => {
+      activeCategory = filter.dataset.filter || 'All';
+      filters.forEach((button) => button.setAttribute('aria-pressed', String(button === filter)));
+      updateProjects();
+    }));
+    search?.addEventListener('input', updateProjects);
+  </script>
+</BaseLayout>
