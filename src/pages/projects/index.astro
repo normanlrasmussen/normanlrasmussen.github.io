@@ -14,10 +14,10 @@ import { categories, projects } from '../../data/projects';
   <section class="page-content">
     <div class="wrap">
       <div class="filters" role="group" aria-label="Filter projects by category">
-        {categories.map((category) => <button class="filter" data-filter={category} aria-pressed={category === 'All' ? 'true' : 'false'} type="button">{category}</button>)}
+        {categories.map((category) => <button class="filter" data-filter={category} aria-controls="project-grid" aria-pressed={category === 'All' ? 'true' : 'false'} type="button">{category}</button>)}
       </div>
       <label class="section-label" for="project-search">Search projects</label>
-      <input class="search-field" id="project-search" type="search" placeholder="Search by project, technology, or topic…" autocomplete="off" />
+      <input class="search-field" id="project-search" aria-controls="project-grid" type="search" placeholder="Search by project, technology, or topic…" autocomplete="off" />
       <p class="results-count" id="results-count" aria-live="polite">{projects.length} projects</p>
       <div class="projects-grid" id="project-grid">
         {projects.map((project) => (

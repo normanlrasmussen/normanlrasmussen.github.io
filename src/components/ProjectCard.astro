@@ -6,11 +6,14 @@ const { project } = Astro.props;
 <article class="project-card">
   <a class={'project-visual accent-' + project.accent} href={'/projects/' + project.slug + '/'} aria-label={'View ' + project.name + ' project'}>
     <span class="visual-grid" aria-hidden="true"></span>
+    <span class="visual-kicker" aria-hidden="true">{project.category}</span>
     <span class="visual-caption" aria-hidden="true">{project.visual}</span>
     <span class="visual-mark" aria-hidden="true">↗</span>
   </a>
-  <div class="project-meta"><span>{project.category}</span><span class="meta-dot" aria-hidden="true"></span><span>{project.status}</span></div>
-  <h3 class="project-title"><a href={'/projects/' + project.slug + '/'}>{project.name}<span class="arrow" aria-hidden="true">↗</span></a></h3>
-  <p class="project-subtitle">{project.summary}</p>
-  <div class="tag-row">{project.stack.slice(0, 3).map((tag) => <span class="tag">{tag}</span>)}</div>
+  <div class="project-card-body">
+    <div class="project-meta"><span>{project.category}</span><span class="meta-dot" aria-hidden="true"></span><span>{project.status}</span></div>
+    <h3 class="project-title"><a href={'/projects/' + project.slug + '/'}>{project.name}<span class="arrow" aria-hidden="true">↗</span></a></h3>
+    <p class="project-subtitle">{project.summary}</p>
+    <div class="tag-row">{project.stack.slice(0, 3).map((tag) => <span class="tag">{tag}</span>)}</div>
+  </div>
 </article>

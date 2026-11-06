@@ -13,9 +13,12 @@ The following are implemented and verified with a successful Astro build in GitH
 - [x] Add accessible navigation and metadata
 - [x] Configure an automatic GitHub Pages build workflow
 - [x] Verify the source compiles and produces 23 static pages
-- [ ] Rename the repo from `normanlrasmussen.github.io-` to `normanlrasmussen.github.io` (manual action)
-- [ ] Set Settings → Pages → Build and deployment → Source to GitHub Actions (manual action)
-- [ ] Verify live GitHub Pages URL after deployment
+- [x] Rename the repo to `normanlrasmussen.github.io`
+- [x] Set Pages deployment source to GitHub Actions
+- [x] Verify live Pages deployment and its successful workflow
+- [x] Audit all 17 public project repository links (available)
+- [x] Refresh the visual system, responsive navigation, and project cards
+- [x] Add build-time validation of generated internal links
 - [ ] Add current résumé PDF (`public/resume.pdf`) and link it from the résumé page
 - [ ] Add preferred email and/or LinkedIn contact link
 - [ ] Review mobile display and replace illustrative project graphics with real screenshots

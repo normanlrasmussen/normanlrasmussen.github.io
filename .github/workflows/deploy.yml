@@ -32,6 +32,9 @@ jobs:
       - name: Build static site
         run: npm run build
 
+      - name: Check generated internal links
+        run: npm run check:links
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

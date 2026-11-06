@@ -10,6 +10,7 @@ This site is built with [Astro](https://astro.build/), designed as a fast static
 npm install
 npm run dev
 npm run build
+npm run check:links
 ```
 
 Open http://localhost:4321 to preview locally.
@@ -22,13 +23,19 @@ Open http://localhost:4321 to preview locally.
 - `src/styles/global.css` contains the minimal professional design system.
 - `public/` contains public assets.
 
-## Setup before publishing
+## Deployment and quality checks
 
-1. Rename this repository to **normanlrasmussen.github.io** (remove the trailing hyphen).
-2. Go to **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
-3. Check the `Deploy portfolio to GitHub Pages` workflow on the Actions tab.
-4. When a résumé PDF is available, add it as `public/resume.pdf` and update the résumé page.
-5. Add a preferred contact email or LinkedIn URL when ready. The initial site links only to verified public resources.
+The repository is configured for **GitHub Actions** deployment. Every push to `main` runs an Astro production build, validates its generated internal links, and publishes the `dist/` directory to GitHub Pages.
+
+- Live site: https://normanlrasmussen.github.io/
+- CI: `.github/workflows/deploy.yml`
+- Internal-link audit: `scripts/check-site.mjs` (run after `npm run build`)
+
+## Remaining content to add
+
+1. Add a current résumé PDF as `public/resume.pdf` and link it from the résumé page.
+2. Add a preferred contact email or LinkedIn URL when ready.
+3. Replace illustrative project graphics with reviewed screenshots when available.
 
 ## Content and privacy
 
