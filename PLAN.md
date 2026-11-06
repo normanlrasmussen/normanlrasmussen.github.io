@@ -19,8 +19,8 @@ The following are implemented and verified with a successful Astro build in GitH
 - [x] Audit all 17 public project repository links (available)
 - [x] Refresh the visual system, responsive navigation, and project cards
 - [x] Add build-time validation of generated internal links
-- [ ] Add current résumé PDF (`public/resume.pdf`) and link it from the résumé page
-- [ ] Add preferred email and/or LinkedIn contact link
+- [x] Add downloadable public résumé PDF (`public/resume.pdf`) and link it from the résumé page
+- [x] Add LinkedIn profile and a client-assembled email contact link
 - [ ] Review mobile display and replace illustrative project graphics with real screenshots
 
 ## Milestone 2: Project presentation overhaul

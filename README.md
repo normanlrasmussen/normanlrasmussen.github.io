@@ -31,11 +31,18 @@ The repository is configured for **GitHub Actions** deployment. Every push to `m
 - CI: `.github/workflows/deploy.yml`
 - Internal-link audit: `scripts/check-site.mjs` (run after `npm run build`)
 
+## Résumé and contact
+
+- The public résumé is served at `/resume.pdf`.
+- The résumé page links to the approved LinkedIn and GitHub profiles.
+- The email address is assembled on the client so the exact address does not appear in static page HTML. This deters basic scrapers but cannot guarantee protection from advanced crawlers.
+- The public résumé spells out the email in a human-readable but obfuscated form, rather than exposing a machine-readable email address.
+- The résumé includes a contact phone number, which will be publicly visible.
+
 ## Remaining content to add
 
-1. Add a current résumé PDF as `public/resume.pdf` and link it from the résumé page.
-2. Add a preferred contact email or LinkedIn URL when ready.
-3. Replace illustrative project graphics with reviewed screenshots when available.
+1. Replace illustrative project graphics with reviewed screenshots when available.
+2. Re-upload a revised résumé when the public résumé information changes.
 
 ## Content and privacy
 
